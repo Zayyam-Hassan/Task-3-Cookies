@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>CV - Muhammad Zayyam Hassan</title>
+    <style>
+        .disabled {
+            pointer-events: none;
+            opacity: 0.5; 
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">CV - Muhammad Zayyam Hassan</a>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-graduation-cap"></i><span> Education & Experience</span></a></li>
+            <li><a href="Projects.html"><i class="fas fa-folder-open"></i><span> Projects</span></a></li>
+            <li id="skills-link"><a href="skills.html"><i class="fas fa-cogs"></i><span> Skills</span></a></li>
+            <li><a href="#" id="logout-btn" class="disabled"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a></li>
+        </ul>
+    </nav>
+    
+    <div class="main">
+        <div class="contact">
+            <div class="profile">
+                <img src="profile.jpg" alt="Profile Pic" class="profilepic">
+                <h1>Muhammad Zayyam Hassan</h1>
+            </div>
+            <div class="information">
+                <h1>Contact Information</h1>
+                <br />
+                <p><i class="fas fa-envelope"></i><a href="mailto:muhammadzayyam@gmail.com" id="mail">muhammadzayyam@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> +92 345 678 901</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Street, City, Country</p>
+            </div>
+        </div>
+        <div class="EE">
+            <div class="card">
+                <div class="card-header"> 
+                    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>Bachelor of Computer Science, FAST NUCES Islamabad (Expected Graduation: 2025)</li>
+                        <li>FSc Pre-Engineering, Punjab College, Blue Area, Islamabad (2020)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-briefcase"></i> Experience</h2>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>Freelance Full-stack Developer on Fiverr (2023 - Present)</li>
+                        <li>Data Analysis Intern at PriceOye, Islamabad (2024)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to get a cookie by name
+        function getCookie(name) {
+            let cookies = document.cookie.split("; ");
+            for (let i = 0; i < cookies.length; i++) {
+                let [cookieName, cookieValue] = cookies[i].split("=");
+                if (cookieName.trim() === name) {
+                    return cookieValue.trim();
+                }
+            }
+            return null;
+        }
+
+        // Get stored login details
+        let loggedInUser = getCookie("loggedInUser");
+
+        let skillsLink = document.getElementById("skills-link");
+        let logoutBtn = document.getElementById("logout-btn");
+
+        // If user is not logged in or not "zayyam", disable the Skills page and Logout button
+        if (loggedInUser !== "zayyam") {
+            skillsLink.classList.add("disabled");
+            logoutBtn.classList.add("disabled");
+        } else {
+            skillsLink.classList.remove("disabled");
+            logoutBtn.classList.remove("disabled");
+        }
+
+        // Logout functionality
+        logoutBtn.addEventListener("click", function () {
+            document.cookie = "loggedInUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            alert("You have been logged out!");
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>

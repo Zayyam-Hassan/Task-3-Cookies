@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .disabled {
+            pointer-events: none; 
+            opacity: 0.5; 
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">CV - Muhammad Zayyam Hassan</a>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-graduation-cap"></i><span> Education & Experience</span></a></li>
+            <li><a href="Projects.html"><i class="fas fa-folder-open"></i><span> Projects</span></a></li>
+            <li id="skills-link"><a href="skills.html"><i class="fas fa-cogs"></i><span> Skills</span></a></li>
+        </ul>
+    </nav>
+    <div class="main">
+        <div class="projects">
+            <div class="project-card ecommerce">
+                <h2>E-Commerce Website</h2>
+                <p>A fully responsive and feature-rich e-commerce platform that allows users to browse products, add them to the cart, and securely complete purchases. Includes an admin panel for managing inventory and orders.</p>
+                <span class="tech-stack">Technologies: React, Node.js, MongoDB, Tailwind CSS, Stripe API</span>
+            </div>
+    
+            <div class="project-card chat-app">
+                <h2>Real-Time Chat Application</h2>
+                <p>A messaging app with real-time communication using WebSockets. Features include one-on-one and group chats, message history, user authentication, and emoji reactions.</p>
+                <span class="tech-stack">Technologies: Angular, .NET Core, SignalR, SQL Server, Firebase</span>
+            </div>
+    
+            <div class="project-card dashboard">
+                <h2>Data Analysis Dashboard</h2>
+                <p>An interactive dashboard that visualizes complex datasets with dynamic charts and graphs. Provides user-friendly filtering and predictive analytics for data-driven decision-making.</p>
+                <span class="tech-stack">Technologies: Python, Pandas, NumPy, Matplotlib, Dash</span>
+            </div>
+    
+            <div class="project-card file-explorer">
+                <h2>Advanced File Explorer</h2>
+                <p>A Java-based file explorer with a modern UI that allows users to browse, search, and perform file operations. Supports recursive directory deletion and multi-tab navigation.</p>
+                <span class="tech-stack">Technologies: Java, JavaFX, Spring Boot</span>
+            </div>
+    
+            <div class="project-card campus-network">
+                <h2>University Campus Network</h2>
+                <p>A fully simulated network infrastructure for a university, including DHCP, NAT, subnetting, and routing protocols. Ensures efficient and secure connectivity between departments.</p>
+                <span class="tech-stack">Technologies: Cisco Packet Tracer, VLANs, OSPF, NAT</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            let cookies = document.cookie.split("; ");
+            for (let i = 0; i < cookies.length; i++) {
+                let [cookieName, cookieValue] = cookies[i].split("=");
+                if (cookieName === name) {
+                    return cookieValue;
+                }
+            }
+            return null;
+        }
+
+        let loggedInUser = getCookie("loggedInUser");
+        let loggedInPass = getCookie("loggedInPass");
+
+        let skillsLink = document.getElementById("skills-link");
+        if (loggedInUser !== "zayyam" || loggedInPass !== "zayyam") {
+            skillsLink.classList.add("disabled"); 
+        }
+    </script>
+</body>
+</html>

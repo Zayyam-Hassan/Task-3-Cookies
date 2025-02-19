@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input id="username" type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input id="password" type="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p class="register-link">Don't have an account? <a href="SignUp.html">Sign Up</a></p>
+    </div>
+
+    <script>
+        function setCookie(name, value, hours) {
+            let date = new Date();
+            date.setTime(date.getTime() + (hours * 60 * 60 * 1000)); 
+            document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+        }
+
+        function getCookie(name) {
+            let cookies = document.cookie.split("; ");
+            for (let i = 0; i < cookies.length; i++) {
+                let [cookieName, cookieValue] = cookies[i].split("=");
+                if (cookieName.trim() === name) {
+                    return cookieValue.trim();
+                }
+            }
+            return null;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let loggedInUser = getCookie("loggedInUser");
+            if (loggedInUser) {
+                alert("You are already logged in as " + loggedInUser);
+                window.location.href = "index.html"; 
+            }
+        });
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let username = document.getElementById("username").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            if (username === "zayyam" && password === "zayyam") {
+                alert("Login Successful!");
+                setCookie("loggedInUser", username, 3);
+                window.location.href = "index.html"; 
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        });
+    </script>
+</body>
+</html>
